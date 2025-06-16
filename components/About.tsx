@@ -32,7 +32,7 @@ export default function About() {
           <div className="relative">
             <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="https://images.pexels.com/photos/4226711/pexels-photo-4226711.jpeg"
+                src="historia.webp"
                 alt="Artesão JSL trabalhando em uma faca"
                 fill
                 className="object-cover"

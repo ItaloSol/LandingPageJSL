@@ -149,9 +149,17 @@ export default function Footer() {
               <p>© 2025 JSL ARTESANATOS. Todos os direitos reservados.</p>
             </div>
             
-            <div className="flex gap-6 text-center md:text-right">
-              <span>Desenvolvido com ❤️ para a arte da cutelaria</span>
-            </div>
+            <div className="text-gray-500 text-sm">
+                Desenvolvido por{' '}
+                <a 
+                  href="https://www.instagram.com/landingpagecraft/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 transition-colors duration-200 font-medium"
+                >
+                  LandingPageCraft
+                </a>
+              </div>
           </div>
         </div>
       </div>

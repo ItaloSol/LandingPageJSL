@@ -84,7 +84,7 @@ export default function Hero() {
               <div className="relative bg-white rounded-3xl shadow-2xl p-8 transform -rotate-2 hover:rotate-0 transition-transform duration-700">
                 <div className="aspect-square relative overflow-hidden rounded-2xl">
                   <Image
-                    src="https://images.pexels.com/photos/7195994/pexels-photo-7195994.jpeg"
+                    src="cutelaria.webp"
                     alt="Faca artesanal JSL ARTESANATOS"
                     fill
                     className="object-cover"

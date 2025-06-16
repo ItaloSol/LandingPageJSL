@@ -102,6 +102,8 @@ export default function Testimonials() {
           <div className="flex justify-center gap-2 mt-8">
             {testimonials.map((_, index) => (
               <button
+                type="button"
+                aria-label={`Slide ${index + 1}`}
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
