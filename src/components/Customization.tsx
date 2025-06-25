@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Ruler, Palette, Lightbulb, Settings } from 'lucide-react';
+import VideoPlayer from './VideoPlayer';
 
 const customOptions = [
   {
@@ -87,7 +88,7 @@ const Customization = () => {
             </motion.div>
           </motion.div>
           
-          {/* Image */}
+          {/* Video Player */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -95,19 +96,13 @@ const Customization = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="relative overflow-hidden rounded-2xl">
-              <img 
-                src="https://images.pexels.com/photos/5691624/pexels-photo-5691624.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
-                alt="Processo artesanal de produção"
-                className="w-full h-96 object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-              <div className="absolute bottom-6 left-6 right-6">
-                <p className="font-inter text-white font-medium">
-                  Processo artesanal com atenção aos mínimos detalhes
-                </p>
-              </div>
-            </div>
+            <VideoPlayer
+              src="/video.mp4"
+              thumbnail="/13facas.webp"
+              title="Processo Artesanal de Criação"
+              duration="2:30"
+              className="shadow-2xl"
+            />
             
             {/* Floating elements */}
             <motion.div
@@ -120,15 +115,7 @@ const Customization = () => {
               <Settings size={24} />
             </motion.div>
             
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              viewport={{ once: true }}
-              className="absolute -bottom-4 -left-4 bg-white text-black p-4 rounded-full shadow-xl"
-            >
-              <Palette size={24} />
-            </motion.div>
+            
           </motion.div>
         </div>
       </div>

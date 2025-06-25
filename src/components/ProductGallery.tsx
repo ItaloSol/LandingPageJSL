@@ -93,7 +93,7 @@ const ProductGallery = () => {
                   alt={product.name}
                   className="w-full h-48 sm:h-64 object-contain group-hover:scale-110 transition-transform duration-500 bg-neutral-800"
                 />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>
+                <div className="absolute inset-0  group-hover:bg-black/20 transition-colors duration-300"></div>
                 <div className="absolute top-4 right-4 bg-amber-600 text-black px-3 py-1 rounded-full font-bold text-sm">
                   {product.price}
                 </div>

@@ -1,11 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, MessageCircle } from 'lucide-react';
 
 const Hero = () => {
   const scrollToProducts = () => {
     const element = document.getElementById('products');
     element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const openWhatsApp = () => {
+    window.open('https://wa.me/554791334961?text=Olá! Gostaria de saber mais sobre os expositores premium para facas!', '_blank');
   };
 
   return (
@@ -40,15 +44,27 @@ const Hero = () => {
           <span className="block mt-2 text-base sm:text-lg text-amber-200">Artesanais • Únicos • Sob Medida</span>
         </motion.p>
         
-        <motion.button
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          onClick={scrollToProducts}
-          className="bg-amber-600 hover:bg-amber-700 text-black font-inter font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          Ver Modelos Disponíveis
-        </motion.button>
+          <button
+            onClick={scrollToProducts}
+            className="bg-amber-600 hover:bg-amber-700 text-black font-inter font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+          >
+            Ver Modelos Disponíveis
+          </button>
+          
+          <button
+            onClick={openWhatsApp}
+            className="bg-green-600 hover:bg-green-700 text-white font-inter font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl flex items-center gap-3"
+          >
+            <MessageCircle size={20} />
+            Falar no WhatsApp
+          </button>
+        </motion.div>
       </div>
       
       <motion.div 

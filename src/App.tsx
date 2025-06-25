@@ -7,6 +7,7 @@ import Customization from './components/Customization';
 import Testimonials from './components/Testimonials';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+import WhatsAppFloat from './components/WhatsAppFloat';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Testimonials />
       <CTA />
       <Footer />
+      <WhatsAppFloat />
     </div>
   );
 }
