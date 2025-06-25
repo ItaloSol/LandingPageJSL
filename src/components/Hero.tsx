@@ -54,7 +54,7 @@ const Hero = () => {
             onClick={scrollToProducts}
             className="bg-amber-600 hover:bg-amber-700 text-black font-inter font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
           >
-            Ver Modelos Disponíveis
+            Ver alguns Modelos 
           </button>
           
           <button

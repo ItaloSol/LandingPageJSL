@@ -2,42 +2,50 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 
+// First, update the mainProducts array structure:
 const mainProducts = [
   {
     name: 'Expositor Suporte para Facas Artesanais sem Porta',
     price: 'R$ 688,00',
     description: 'Caixa em madeira sem porta, ideal para coleções abertas.',
     image: '/semporta.webp',
-    features: ['Madeira Nobre', 'Acabamento Artesanal', 'Fundo em Veludo']
+    features: ['Madeira Nobre', 'Acabamento Artesanal', 'Fundo em Veludo'],
+    url: 'https://www.artesanatojsl.com/artesanato-jsl-expositor-fixar-na-parede-para-10-facas-com-porta-e-chave-mdf-cor-preto/p/MLB44267969#item_id=MLB3922229705'
   },
   {
     name: 'Expositor para 10 Facas Laser com Porta Acrílico',
     price: 'R$ 694,00',
     description: 'Porta em policarbonato cristal resistente, iluminação LED, chave de segurança.',
     image: '/10facas.webp',
-    features: ['LED Integrado', 'Porta Acrílico', 'Chave de Segurança']
+    features: ['LED Integrado', 'Porta Acrílico', 'Chave de Segurança'],
+    url: 'https://www.artesanatojsl.com/artesanato-jsl-expositor-fixar-na-parede-para-10-facas-com-porta-e-chave-mdf-cor-preto/p/MLB44267969#item_id=MLB3922229705'
   },
   {
     name: 'Expositor para 13 Facas com Porta',
     price: 'R$ 1.336,00',
     description: 'Suporte para 13 facas, fundo azul, acrílico cristal e fechadura com chave.',
     image: '/13facas.webp',
-    features: ['13 Compartimentos', 'Fundo Azul', 'Fechadura Segura']
+    features: ['13 Compartimentos', 'Fundo Azul', 'Fechadura Segura'],
+    url: 'https://produto.mercadolivre.com.br/MLB-3787229779-expositor-artesanal-facas-26-compartimentos-suporte-faca-_JM?pdp_filters=condition%3Anew%7Cofficial_store%3A118322%7Cadult_content%3Ayes%7Ccategory%3AMLB1574#polycard_client=mshops-appearance-api&source=eshops&tracking_id=9dde31df-41fd-4c2b-82c3-be05f28e4517'
   }
 ];
 
+// Then update the variations array:
 const variations = [
   {
     name: 'Expositor 1 Faca',
-    image: '/umafaca.webp'
+    image: '/umafaca.webp',
+    url: 'https://produto.mercadolivre.com.br/MLB-3984367425-porta-facas-de-churrasco-em-madeira-mdf-e-acrilico-_JM?pdp_filters=condition%3Anew%7Cofficial_store%3A118322%7Cadult_content%3Ayes%7Ccategory%3AMLB1574#polycard_client=mshops-appearance-api&source=eshops&tracking_id=9dde31df-41fd-4c2b-82c3-be05f28e4517' // Add URL for each variation
   },
   {
     name: 'Expositor 2 Facas',
-    image: '/2facas.webp'
+    image: '/2facas.webp',
+    url: 'https://produto.mercadolivre.com.br/MLB-4814623478-suporte-expositor-de-facas-duplo-artesanais-facas-e-chaira-_JM?pdp_filters=condition%3Anew%7Cofficial_store%3A118322%7Cadult_content%3Ayes%7Ccategory%3AMLB1574#polycard_client=mshops-appearance-api&source=eshops&tracking_id=9dde31df-41fd-4c2b-82c3-be05f28e4517'
   },
   {
     name: 'Expositor 3 Facas',
-    image: '/3facas.webp'
+    image: '/3facas.webp',
+    url: 'https://produto.mercadolivre.com.br/MLB-3754970677-suporte-para-03-facas-expositor-de-facas-e-chaira-artesanal-_JM?pdp_filters=condition%3Anew%7Cofficial_store%3A118322%7Cadult_content%3Ayes%7Ccategory%3AMLB1574#polycard_client=mshops-appearance-api&source=eshops&tracking_id=9dde31df-41fd-4c2b-82c3-be05f28e4517'
   },
   {
     name: 'Expositor 4 Facas',
@@ -51,11 +59,16 @@ const variations = [
 ];
 
 const ProductGallery = () => {
-  const openPurchaseLink = (productName?: string) => {
-    const message = productName 
-      ? `Olá! Gostaria de saber mais sobre o ${productName}.`
-      : 'Olá! Gostaria de saber mais sobre os expositores premium para facas.';
-    window.open(`https://wa.me/554791334961?text=${encodeURIComponent(message)}`, '_blank');
+  // Update the openPurchaseLink function:
+  const openPurchaseLink = (productName?: string, productUrl?: string) => {
+    if (productUrl) {
+      window.open(productUrl, '_blank'); // Open in new tab for external links
+    } else {
+      const message = productName 
+        ? `Olá! Gostaria de saber mais sobre o ${productName}.`
+        : 'Olá! Gostaria de saber mais sobre os expositores premium para facas.';
+      window.open(`https://wa.me/554791334961?text=${encodeURIComponent(message)}`, '_blank');
+    }
   };
 
   return (
@@ -119,10 +132,10 @@ const ProductGallery = () => {
                 </div>
                 
                 <button
-                  onClick={() => openPurchaseLink(product.name)}
+                  onClick={() => openPurchaseLink(product.name, product.url)}
                   className="w-full bg-amber-600 hover:bg-amber-700 text-black font-semibold py-2 sm:py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group text-sm sm:text-base hover:shadow-lg"
                 >
-                  Comprar Agora
+                  Ver Detalhes
                   <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
               </div>
@@ -151,7 +164,7 @@ const ProductGallery = () => {
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
                 className="bg-neutral-800 p-3 sm:p-4 rounded-xl text-center hover:bg-amber-600 hover:text-black transition-all duration-300 cursor-pointer border border-neutral-700 group"
-                onClick={() => openPurchaseLink(variation.name)}
+                onClick={() => openPurchaseLink(variation.name, variation.url)}
               >
                 <div className="w-full h-16 sm:h-20 bg-neutral-700 rounded-lg mb-3 overflow-hidden group-hover:bg-black/20 transition-colors duration-300">
                   <img 
