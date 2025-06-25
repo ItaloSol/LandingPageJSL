@@ -6,11 +6,11 @@ import { ExternalLink } from 'lucide-react';
 const mainProducts = [
   {
     name: 'Expositor Suporte para Facas Artesanais sem Porta',
-    price: 'R$ 688,00',
+    price: 'R$ 1.692,82',
     description: 'Caixa em madeira sem porta, ideal para coleções abertas.',
     image: '/semporta.webp',
     features: ['Madeira Nobre', 'Acabamento Artesanal', 'Fundo em Veludo'],
-    url: 'https://www.artesanatojsl.com/artesanato-jsl-expositor-fixar-na-parede-para-10-facas-com-porta-e-chave-mdf-cor-preto/p/MLB44267969#item_id=MLB3922229705'
+    url: 'https://produto.mercadolivre.com.br/MLB-3787229779-expositor-artesanal-facas-26-compartimentos-suporte-faca-_JM?pdp_filters=condition%3Anew%7Cofficial_store%3A118322%7Cadult_content%3Ayes%7Ccategory%3AMLB1574#polycard_client=mshops-appearance-api&source=eshops&tracking_id=9dde31df-41fd-4c2b-82c3-be05f28e4517'
   },
   {
     name: 'Expositor para 10 Facas Laser com Porta Acrílico',
@@ -22,11 +22,11 @@ const mainProducts = [
   },
   {
     name: 'Expositor para 13 Facas com Porta',
-    price: 'R$ 1.336,00',
+    price: 'R$ 1.084,00',
     description: 'Suporte para 13 facas, fundo azul, acrílico cristal e fechadura com chave.',
     image: '/13facas.webp',
     features: ['13 Compartimentos', 'Fundo Azul', 'Fechadura Segura'],
-    url: 'https://produto.mercadolivre.com.br/MLB-3787229779-expositor-artesanal-facas-26-compartimentos-suporte-faca-_JM?pdp_filters=condition%3Anew%7Cofficial_store%3A118322%7Cadult_content%3Ayes%7Ccategory%3AMLB1574#polycard_client=mshops-appearance-api&source=eshops&tracking_id=9dde31df-41fd-4c2b-82c3-be05f28e4517'
+    url: 'https://www.artesanatojsl.com/artesanato-jsl-expositor-fixar-na-parede-para-10-facas-com-porta-e-chave-mdf-cor-preto/p/MLB44267969#item_id=MLB3922229705'
   }
 ];
 
@@ -107,9 +107,7 @@ const ProductGallery = () => {
                   className="w-full h-48 sm:h-64 object-contain group-hover:scale-110 transition-transform duration-500 bg-neutral-800"
                 />
                 <div className="absolute inset-0  group-hover:bg-black/20 transition-colors duration-300"></div>
-                <div className="absolute top-4 right-4 bg-amber-600 text-black px-3 py-1 rounded-full font-bold text-sm">
-                  {product.price}
-                </div>
+               
               </div>
               
               <div className="p-4 sm:p-6">
