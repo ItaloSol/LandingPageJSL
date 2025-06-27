@@ -16,7 +16,7 @@ const mainProducts = [
     name: 'Suporte Para Facas De Madeira Expositor 13 Facas',
     price: 'R$ 1.084,00',
     description: 'Porta em policarbonato cristal resistente, iluminação LED.',
-    image: '/13FACAS.webp',
+    image: '/8FACAS.webp',
     features: ['13 Compartimentos'],
     url: 'https://produto.mercadolivre.com.br/MLB-3169333131-suporte-para-facas-de-madeira-expositor-13-facas-_JM?attributes=COLOR_SECONDARY_COLOR%3ARnVuZG8gVmVybWVsaG8%3D#origin%3Dshare%26sid%3Dshare'
   },
@@ -24,7 +24,7 @@ const mainProducts = [
     name: 'Expositor Para Facas De Churrasco Suporte Para 8 Facas',
     price: 'R$ 688,00',
     description: 'Suporte para 8 facas, iluminação LED.',
-    image: '/8FACAS.webp',
+    image: '/13FACAS.webp',
     features: ['8 Compartimentos'],
     url: 'https://produto.mercadolivre.com.br/MLB-3452779429-expositor-para-facas-de-churrasco-suporte-para-8-facas-_JM#origin%3Dshare%26sid%3Dshare'
   }
