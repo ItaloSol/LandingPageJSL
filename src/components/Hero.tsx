@@ -50,12 +50,14 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <button
-            onClick={scrollToProducts}
+           <a
+            rel='noopener noreferrer'
+            target='_blank'
+            href='https://www.mercadolivre.com.br/loja/jsl-artesanatos#from=share_eshop'
             className="bg-amber-600 hover:bg-amber-700 text-black font-inter font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
           >
             Ver alguns Modelos 
-          </button>
+          </a>
           
           <button
             onClick={openWhatsApp}

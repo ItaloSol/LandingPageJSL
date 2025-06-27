@@ -5,28 +5,28 @@ import { ExternalLink } from 'lucide-react';
 // First, update the mainProducts array structure:
 const mainProducts = [
   {
-    name: 'Expositor Suporte para Facas Artesanais sem Porta',
+    name: 'Expositor Artesanal Facas 26 Compartimentos Suporte Faca',
     price: 'R$ 1.692,82',
-    description: 'Caixa em madeira sem porta, ideal para coleções abertas.',
-    image: '/semporta.webp',
-    features: ['Madeira Nobre', 'Acabamento Artesanal', 'Fundo em Veludo'],
-    url: 'https://produto.mercadolivre.com.br/MLB-3787229779-expositor-artesanal-facas-26-compartimentos-suporte-faca-_JM?pdp_filters=condition%3Anew%7Cofficial_store%3A118322%7Cadult_content%3Ayes%7Ccategory%3AMLB1574#polycard_client=mshops-appearance-api&source=eshops&tracking_id=9dde31df-41fd-4c2b-82c3-be05f28e4517'
+    description: 'Caixa em madeira sem porta, iluminação LED, ideal para coleções abertas.',
+    image: '/26FACAS.webp',
+    features: ['26 Compartimentos'],
+    url: 'https://produto.mercadolivre.com.br/MLB-3787229779-expositor-artesanal-facas-26-compartimentos-suporte-faca-_JM#origin%3Dshare%26sid%3Dshare'
   },
   {
-    name: 'Expositor para 10 Facas Laser com Porta Acrílico',
-    price: 'R$ 694,00',
-    description: 'Porta em policarbonato cristal resistente, iluminação LED, chave de segurança.',
-    image: '/10facas.webp',
-    features: ['LED Integrado', 'Porta Acrílico', 'Chave de Segurança'],
-    url: 'https://www.artesanatojsl.com/artesanato-jsl-expositor-fixar-na-parede-para-10-facas-com-porta-e-chave-mdf-cor-preto/p/MLB44267969#item_id=MLB3922229705'
-  },
-  {
-    name: 'Expositor para 13 Facas com Porta',
+    name: 'Suporte Para Facas De Madeira Expositor 13 Facas',
     price: 'R$ 1.084,00',
-    description: 'Suporte para 13 facas, fundo azul, acrílico cristal e fechadura com chave.',
-    image: '/13facas.webp',
-    features: ['13 Compartimentos', 'Fundo Azul', 'Fechadura Segura'],
-    url: 'https://www.artesanatojsl.com/artesanato-jsl-expositor-fixar-na-parede-para-10-facas-com-porta-e-chave-mdf-cor-preto/p/MLB44267969#item_id=MLB3922229705'
+    description: 'Porta em policarbonato cristal resistente, iluminação LED.',
+    image: '/13FACAS.webp',
+    features: ['13 Compartimentos'],
+    url: 'https://produto.mercadolivre.com.br/MLB-3169333131-suporte-para-facas-de-madeira-expositor-13-facas-_JM?attributes=COLOR_SECONDARY_COLOR%3ARnVuZG8gVmVybWVsaG8%3D#origin%3Dshare%26sid%3Dshare'
+  },
+  {
+    name: 'Expositor Para Facas De Churrasco Suporte Para 8 Facas',
+    price: 'R$ 688,00',
+    description: 'Suporte para 8 facas, iluminação LED.',
+    image: '/8FACAS.webp',
+    features: ['8 Compartimentos'],
+    url: 'https://produto.mercadolivre.com.br/MLB-3452779429-expositor-para-facas-de-churrasco-suporte-para-8-facas-_JM#origin%3Dshare%26sid%3Dshare'
   }
 ];
 
@@ -70,6 +70,7 @@ const ProductGallery = () => {
       window.open(`https://wa.me/554791334961?text=${encodeURIComponent(message)}`, '_blank');
     }
   };
+  
 
   return (
     <section id="products" className="py-16 sm:py-20 bg-neutral-800 overflow-hidden">
@@ -177,12 +178,14 @@ const ProductGallery = () => {
           </div>
           
           <div className="text-center mt-6 sm:mt-8">
-            <button
-              onClick={() => openPurchaseLink()}
+            <a
+            rel='noopener noreferrer'
+            target='_blank'
+            href='https://www.mercadolivre.com.br/loja/jsl-artesanatos#from=share_eshop'
               className="bg-amber-600 hover:bg-amber-700 text-black font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base hover:shadow-lg"
             >
               Ver Todos os Modelos
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>

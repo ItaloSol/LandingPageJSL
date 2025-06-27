@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Clock, Award } from 'lucide-react';
 
 const CTA = () => {
-  const openPurchaseLink = () => {
-    window.open('https://wa.me/554791334961?text=Olá! Quero garantir meu expositor premium personalizado para facas!', '_blank');
+  // const openPurchaseLink = () => {
+  //   window.open('https://wa.me/554791334961?text=Olá! Quero garantir meu expositor premium personalizado para facas!', '_blank');
+  // };
+  const mercado = () => {
+    window.open('https://www.mercadolivre.com.br/loja/jsl-artesanatos#from=share_eshop', '_blank');
   };
 
   return (
@@ -16,12 +19,12 @@ const CTA = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-6">
+          <h2 className="font-playfair text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
             Garanta o Expositor Ideal
             <span className="block">para Sua Coleção</span>
           </h2>
           
-          <p className="font-inter text-lg sm:text-xl text-black/80 mb-8 max-w-2xl mx-auto leading-relaxed px-2">
+          <p className="font-inter text-lg sm:text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed px-2">
             Transforme sua paixão por facas em uma exposição digna de colecionador.
             <span className="block mt-2 font-semibold">
               Cada peça é única e feita especialmente para você.
@@ -37,9 +40,9 @@ const CTA = () => {
               viewport={{ once: true }}
               className="bg-black/10 rounded-xl p-4 sm:p-6"
             >
-              <Clock size={28} className="text-black mx-auto mb-3" />
-              <h3 className="font-inter font-semibold text-black mb-2 text-sm sm:text-base">Entrega Rápida</h3>
-              <p className="font-inter text-black/70 text-xs sm:text-sm">15-20 dias úteis</p>
+              <Clock size={28} className="text-white mx-auto mb-3" />
+              <h3 className="font-inter font-semibold text-white mb-2 text-sm sm:text-base">Entrega Rápida</h3>
+              <p className="font-inter text-white/70 text-xs sm:text-sm">15-20 dias úteis</p>
             </motion.div>
             
             <motion.div
@@ -49,9 +52,9 @@ const CTA = () => {
               viewport={{ once: true }}
               className="bg-black/10 rounded-xl p-4 sm:p-6"
             >
-              <Award size={28} className="text-black mx-auto mb-3" />
-              <h3 className="font-inter font-semibold text-black mb-2 text-sm sm:text-base">Garantia Total</h3>
-              <p className="font-inter text-black/70 text-xs sm:text-sm">12 meses</p>
+              <Award size={28} className="text-white mx-auto mb-3" />
+              <h3 className="font-inter font-semibold text-white mb-2 text-sm sm:text-base">Garantia Total</h3>
+              <p className="font-inter text-white/70 text-xs sm:text-sm">12 meses</p>
             </motion.div>
             
             <motion.div
@@ -61,9 +64,9 @@ const CTA = () => {
               viewport={{ once: true }}
               className="bg-black/10 rounded-xl p-4 sm:p-6"
             >
-              <ExternalLink size={28} className="text-black mx-auto mb-3" />
-              <h3 className="font-inter font-semibold text-black mb-2 text-sm sm:text-base">Suporte VIP</h3>
-              <p className="font-inter text-black/70 text-xs sm:text-sm">Atendimento exclusivo</p>
+              <ExternalLink size={28} className="text-white mx-auto mb-3" />
+              <h3 className="font-inter font-semibold text-white mb-2 text-sm sm:text-base">Suporte VIP</h3>
+              <p className="font-inter text-white/70 text-xs sm:text-sm">Atendimento exclusivo</p>
             </motion.div>
           </div>
           
@@ -72,7 +75,7 @@ const CTA = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
             viewport={{ once: true }}
-            onClick={openPurchaseLink}
+            onClick={mercado}
             className="bg-black text-white font-inter font-bold text-lg sm:text-xl px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 mx-auto hover:shadow-black/50"
           >
             Comprar Agora
@@ -84,7 +87,7 @@ const CTA = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
             viewport={{ once: true }}
-            className="font-inter text-black/60 mt-4 text-xs sm:text-sm px-2"
+            className="font-inter text-white/60 mt-4 text-xs sm:text-sm px-2"
           >
             💬 Fale conosco pelo WhatsApp para um orçamento personalizado
           </motion.p>
