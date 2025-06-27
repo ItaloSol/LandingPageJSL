@@ -24,7 +24,7 @@ const mainProducts = [
     name: 'Expositor Para Facas De Churrasco Suporte Para 8 Facas',
     price: 'R$ 688,00',
     description: 'Suporte para 8 facas, iluminação LED.',
-    image: '/13FACAS.webp',
+    image: '/8faquinhas.webp',
     features: ['8 Compartimentos'],
     url: 'https://produto.mercadolivre.com.br/MLB-3452779429-expositor-para-facas-de-churrasco-suporte-para-8-facas-_JM#origin%3Dshare%26sid%3Dshare'
   }
