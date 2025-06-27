@@ -7,7 +7,7 @@ const mainProducts = [
   {
     name: 'Expositor Artesanal Facas 26 Compartimentos Suporte Faca',
     price: 'R$ 1.692,82',
-    description: 'Caixa em madeira sem porta, iluminação LED, ideal para coleções abertas.',
+    description: 'Caixa em madeira com porta, iluminação LED, ideal para coleções abertas.',
     image: '/26FACAS.webp',
     features: ['26 Compartimentos'],
     url: 'https://produto.mercadolivre.com.br/MLB-3787229779-expositor-artesanal-facas-26-compartimentos-suporte-faca-_JM#origin%3Dshare%26sid%3Dshare'
@@ -15,7 +15,7 @@ const mainProducts = [
   {
     name: 'Suporte Para Facas De Madeira Expositor 13 Facas',
     price: 'R$ 1.084,00',
-    description: 'Porta em policarbonato cristal resistente, iluminação LED.',
+    description: 'Porta em acrílico cristal resistente, iluminação LED.',
     image: '/8FACAS.webp',
     features: ['13 Compartimentos'],
     url: 'https://produto.mercadolivre.com.br/MLB-3169333131-suporte-para-facas-de-madeira-expositor-13-facas-_JM?attributes=COLOR_SECONDARY_COLOR%3ARnVuZG8gVmVybWVsaG8%3D#origin%3Dshare%26sid%3Dshare'
