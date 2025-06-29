@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Maximize, Loader2 } from 'lucide-react';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 interface VideoPlayerProps {
   src: string;
@@ -28,10 +29,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const controlsTimeoutRef = useRef<NodeJS.Timeout>();
+  const { trackVideoPlay } = useAnalytics();
 
   const handleThumbnailClick = () => {
     setIsLoading(true);
     setIsLoaded(true);
+    trackVideoPlay(title, src);
   };
 
   const handleVideoLoad = () => {

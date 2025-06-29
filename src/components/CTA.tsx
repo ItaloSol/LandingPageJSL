@@ -1,13 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Clock, Award } from 'lucide-react';
+import { ExternalLink, Clock, Award, MessageCircle } from 'lucide-react';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 const CTA = () => {
-  // const openPurchaseLink = () => {
-  //   window.open('https://wa.me/554791334961?text=Olá! Quero garantir meu expositor premium personalizado para facas!', '_blank');
-  // };
-  const mercado = () => {
-    window.open('https://www.mercadolivre.com.br/loja/jsl-artesanatos#from=share_eshop', '_blank');
+  const { trackPurchaseIntent, trackWhatsAppClick } = useAnalytics();
+
+  const handleGetQuote = () => {
+    trackWhatsAppClick('cta_get_quote');
+    const message = 'Olá! Quero garantir meu expositor premium personalizado para facas! Pode me enviar um orçamento detalhado?';
+    window.open(`https://wa.me/554791334961?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
+  const openWhatsApp = () => {
+    trackWhatsAppClick('cta_section');
+    const message = 'Olá! Gostaria de um orçamento personalizado para expositor de facas. Pode me ajudar?';
+    window.open(`https://wa.me/554791334961?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
@@ -64,7 +72,7 @@ const CTA = () => {
               viewport={{ once: true }}
               className="bg-black/10 rounded-xl p-4 sm:p-6"
             >
-              <ExternalLink size={28} className="text-white mx-auto mb-3" />
+              <MessageCircle size={28} className="text-white mx-auto mb-3" />
               <h3 className="font-inter font-semibold text-white mb-2 text-sm sm:text-base">Suporte VIP</h3>
               <p className="font-inter text-white/70 text-xs sm:text-sm">Atendimento exclusivo</p>
             </motion.div>
@@ -75,22 +83,23 @@ const CTA = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
             viewport={{ once: true }}
-            onClick={mercado}
+            onClick={handleGetQuote}
             className="bg-black text-white font-inter font-bold text-lg sm:text-xl px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:scale-105 transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 mx-auto hover:shadow-black/50"
           >
-            Comprar Agora
-            <ExternalLink size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
+            <MessageCircle size={20} />
+            Solicitar Orçamento
           </motion.button>
           
-          <motion.p
+          <motion.button
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
             viewport={{ once: true }}
-            className="font-inter text-white/60 mt-4 text-xs sm:text-sm px-2"
+            onClick={openWhatsApp}
+            className="font-inter text-white/80 hover:text-white mt-4 text-xs sm:text-sm px-2 underline transition-colors duration-300"
           >
             💬 Fale conosco pelo WhatsApp para um orçamento personalizado
-          </motion.p>
+          </motion.button>
         </motion.div>
       </div>
     </section>

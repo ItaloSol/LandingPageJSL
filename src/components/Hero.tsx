@@ -1,15 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, MessageCircle } from 'lucide-react';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 const Hero = () => {
+  const { trackWhatsAppClick, trackSectionView } = useAnalytics();
+
   const scrollToProducts = () => {
     const element = document.getElementById('products');
     element?.scrollIntoView({ behavior: 'smooth' });
+    trackSectionView('products_from_hero');
   };
 
   const openWhatsApp = () => {
+    trackWhatsAppClick('hero_button');
     window.open('https://wa.me/554791334961?text=Olá! Gostaria de saber mais sobre os expositores premium para facas!', '_blank');
+  };
+
+  const handleViewModels = () => {
+    trackWhatsAppClick('hero_view_models');
+    const message = 'Olá! Gostaria de ver todos os modelos disponíveis de expositores premium para facas. Pode me mostrar as opções?';
+    window.open(`https://wa.me/554791334961?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
@@ -50,14 +61,12 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-           <a
-            rel='noopener noreferrer'
-            target='_blank'
-            href='https://www.mercadolivre.com.br/loja/jsl-artesanatos#from=share_eshop'
+           <button
+            onClick={handleViewModels}
             className="bg-amber-600 hover:bg-amber-700 text-black font-inter font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-base sm:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
           >
-            Ver alguns Modelos 
-          </a>
+            Ver Modelos Disponíveis
+          </button>
           
           <button
             onClick={openWhatsApp}
@@ -73,7 +82,8 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce cursor-pointer"
+        onClick={scrollToProducts}
       >
         <ChevronDown size={32} />
       </motion.div>

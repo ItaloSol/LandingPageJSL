@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X } from 'lucide-react';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 const WhatsAppFloat = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const { trackWhatsAppClick } = useAnalytics();
 
   useEffect(() => {
     // Show the button after 2 seconds
@@ -29,6 +31,7 @@ const WhatsAppFloat = () => {
   }, [isVisible]);
 
   const openWhatsApp = () => {
+    trackWhatsAppClick('floating_button');
     window.open('https://wa.me/554791334961?text=Olá! Gostaria de saber mais sobre os expositores premium para facas!', '_blank');
   };
 

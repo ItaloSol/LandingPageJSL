@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 // First, update the mainProducts array structure:
 const mainProducts = [
@@ -10,7 +11,7 @@ const mainProducts = [
     description: 'Caixa em madeira com porta, iluminação LED, ideal para coleções abertas.',
     image: '/26FACAS.webp',
     features: ['26 Compartimentos'],
-    url: 'https://produto.mercadolivre.com.br/MLB-3787229779-expositor-artesanal-facas-26-compartimentos-suporte-faca-_JM#origin%3Dshare%26sid%3Dshare'
+    whatsappMessage: 'Olá! Tenho interesse no Expositor Artesanal para 26 Facas. Pode me enviar mais detalhes sobre este modelo, incluindo dimensões, opções de personalização e prazo de entrega?'
   },
   {
     name: 'Suporte Para Facas De Madeira Expositor 13 Facas',
@@ -18,7 +19,7 @@ const mainProducts = [
     description: 'Porta em acrílico cristal resistente, iluminação LED.',
     image: '/8FACAS.webp',
     features: ['13 Compartimentos'],
-    url: 'https://produto.mercadolivre.com.br/MLB-3169333131-suporte-para-facas-de-madeira-expositor-13-facas-_JM?attributes=COLOR_SECONDARY_COLOR%3ARnVuZG8gVmVybWVsaG8%3D#origin%3Dshare%26sid%3Dshare'
+    whatsappMessage: 'Olá! Gostaria de saber mais sobre o Expositor para 13 Facas. Pode me informar sobre as opções de madeira, sistema de iluminação LED e possibilidades de customização?'
   },
   {
     name: 'Expositor Para Facas De Churrasco Suporte Para 8 Facas',
@@ -26,7 +27,7 @@ const mainProducts = [
     description: 'Suporte para 8 facas, iluminação LED.',
     image: '/8faquinhas.webp',
     features: ['8 Compartimentos'],
-    url: 'https://produto.mercadolivre.com.br/MLB-3452779429-expositor-para-facas-de-churrasco-suporte-para-8-facas-_JM#origin%3Dshare%26sid%3Dshare'
+    whatsappMessage: 'Olá! Tenho interesse no Expositor para 8 Facas de Churrasco. Pode me enviar informações sobre este modelo, incluindo preço, materiais utilizados e tempo de produção?'
   }
 ];
 
@@ -35,42 +36,56 @@ const variations = [
   {
     name: 'Expositor 1 Faca',
     image: '/umafaca.webp',
-    url: 'https://produto.mercadolivre.com.br/MLB-3984367425-porta-facas-de-churrasco-em-madeira-mdf-e-acrilico-_JM?pdp_filters=condition%3Anew%7Cofficial_store%3A118322%7Cadult_content%3Ayes%7Ccategory%3AMLB1574#polycard_client=mshops-appearance-api&source=eshops&tracking_id=9dde31df-41fd-4c2b-82c3-be05f28e4517' // Add URL for each variation
+    whatsappMessage: 'Olá! Gostaria de um orçamento para o Expositor Individual (1 faca). Pode me enviar detalhes sobre este modelo compacto e suas opções de personalização?'
   },
   {
     name: 'Expositor 2 Facas',
     image: '/2facas.webp',
-    url: 'https://produto.mercadolivre.com.br/MLB-4814623478-suporte-expositor-de-facas-duplo-artesanais-facas-e-chaira-_JM?pdp_filters=condition%3Anew%7Cofficial_store%3A118322%7Cadult_content%3Ayes%7Ccategory%3AMLB1574#polycard_client=mshops-appearance-api&source=eshops&tracking_id=9dde31df-41fd-4c2b-82c3-be05f28e4517'
+    whatsappMessage: 'Olá! Tenho interesse no Expositor para 2 Facas. Pode me informar sobre as dimensões, materiais e preço deste modelo?'
   },
   {
     name: 'Expositor 3 Facas',
     image: '/3facas.webp',
-    url: 'https://produto.mercadolivre.com.br/MLB-3754970677-suporte-para-03-facas-expositor-de-facas-e-chaira-artesanal-_JM?pdp_filters=condition%3Anew%7Cofficial_store%3A118322%7Cadult_content%3Ayes%7Ccategory%3AMLB1574#polycard_client=mshops-appearance-api&source=eshops&tracking_id=9dde31df-41fd-4c2b-82c3-be05f28e4517'
+    whatsappMessage: 'Olá! Gostaria de saber mais sobre o Expositor para 3 Facas. Pode me enviar informações sobre este modelo e suas características?'
   },
   {
     name: 'Expositor 4 Facas',
-    image: '/4facas.webp'
+    image: '/4facas.webp',
+    whatsappMessage: 'Olá! Tenho interesse no Expositor para 4 Facas. Pode me enviar detalhes sobre dimensões, acabamento e prazo de entrega?'
   },
   {
     name: 'Expositor 6 Facas',
-    image: '/6canivete.webp'
+    image: '/6canivete.webp',
+    whatsappMessage: 'Olá! Gostaria de um orçamento para o Expositor de 6 Facas/Canivetes. Pode me informar sobre as especificações e opções disponíveis?'
   }
- 
 ];
 
 const ProductGallery = () => {
-  // Update the openPurchaseLink function:
-  const openPurchaseLink = (productName?: string, productUrl?: string) => {
-    if (productUrl) {
-      window.open(productUrl, '_blank'); // Open in new tab for external links
-    } else {
-      const message = productName 
-        ? `Olá! Gostaria de saber mais sobre o ${productName}.`
-        : 'Olá! Gostaria de saber mais sobre os expositores premium para facas.';
-      window.open(`https://wa.me/554791334961?text=${encodeURIComponent(message)}`, '_blank');
-    }
+  const { trackProductView, trackWhatsAppClick, trackPurchaseIntent } = useAnalytics();
+
+  // Update the openPurchaseLink function for main products:
+  const openProductWhatsApp = (product: typeof mainProducts[0]) => {
+    trackWhatsAppClick('product_details');
+    trackProductView(product.name, 'premium');
+    trackPurchaseIntent(product.name);
+    
+    window.open(`https://wa.me/554791334961?text=${encodeURIComponent(product.whatsappMessage)}`, '_blank');
   };
-  
+
+  // Function for variation products:
+  const openVariationWhatsApp = (variation: typeof variations[0]) => {
+    trackWhatsAppClick('product_variation');
+    trackProductView(variation.name, 'compact');
+    trackPurchaseIntent(variation.name);
+    
+    window.open(`https://wa.me/554791334961?text=${encodeURIComponent(variation.whatsappMessage)}`, '_blank');
+  };
+
+  const handleViewAllModels = () => {
+    trackWhatsAppClick('view_all_models');
+    const message = 'Olá! Gostaria de ver todos os modelos de expositores disponíveis. Pode me mostrar o catálogo completo com preços e opções de personalização?';
+    window.open(`https://wa.me/554791334961?text=${encodeURIComponent(message)}`, '_blank');
+  };
 
   return (
     <section id="products" className="py-16 sm:py-20 bg-neutral-800 overflow-hidden">
@@ -107,8 +122,12 @@ const ProductGallery = () => {
                   alt={product.name}
                   className="w-full h-48 sm:h-64 object-contain group-hover:scale-110 transition-transform duration-500 bg-neutral-800"
                 />
-                <div className="absolute inset-0  group-hover:bg-black/20 transition-colors duration-300"></div>
-               
+                <div className="absolute inset-0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                
+                {/* Price badge */}
+                <div className="absolute top-4 right-4 bg-amber-600 text-black px-3 py-1 rounded-full font-bold text-sm">
+                  {product.price}
+                </div>
               </div>
               
               <div className="p-4 sm:p-6">
@@ -131,11 +150,11 @@ const ProductGallery = () => {
                 </div>
                 
                 <button
-                  onClick={() => openPurchaseLink(product.name, product.url)}
-                  className="w-full bg-amber-600 hover:bg-amber-700 text-black font-semibold py-2 sm:py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group text-sm sm:text-base hover:shadow-lg"
+                  onClick={() => openProductWhatsApp(product)}
+                  className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 sm:py-3 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group text-sm sm:text-base hover:shadow-lg"
                 >
-                  Ver Detalhes
-                  <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                  <MessageCircle size={16} />
+                  Solicitar Informações
                 </button>
               </div>
             </motion.div>
@@ -151,7 +170,7 @@ const ProductGallery = () => {
           className="bg-black rounded-2xl p-6 sm:p-8"
         >
           <h3 className="font-playfair text-xl sm:text-2xl md:text-3xl font-bold text-white mb-6 text-center">
-            + 10 Variações Compactas
+            Modelos Compactos Disponíveis
           </h3>
           
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
@@ -162,8 +181,8 @@ const ProductGallery = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
-                className="bg-neutral-800 p-3 sm:p-4 rounded-xl text-center hover:bg-amber-600 hover:text-black transition-all duration-300 cursor-pointer border border-neutral-700 group"
-                onClick={() => openPurchaseLink(variation.name, variation.url)}
+                className="bg-neutral-800 p-3 sm:p-4 rounded-xl text-center hover:bg-green-600 hover:text-white transition-all duration-300 cursor-pointer border border-neutral-700 group"
+                onClick={() => openVariationWhatsApp(variation)}
               >
                 <div className="w-full h-16 sm:h-20 bg-neutral-700 rounded-lg mb-3 overflow-hidden group-hover:bg-black/20 transition-colors duration-300">
                   <img 
@@ -172,20 +191,25 @@ const ProductGallery = () => {
                     className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 bg-neutral-800"
                   />
                 </div>
-                <p className="font-inter text-xs sm:text-sm font-medium">{variation.name}</p>
+                <p className="font-inter text-xs sm:text-sm font-medium mb-2 text-gray-300 group-hover:text-white">
+                  {variation.name}
+                </p>
+                <div className="flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <MessageCircle size={12} />
+                  <span className="text-xs">Consultar</span>
+                </div>
               </motion.div>
             ))}
           </div>
           
           <div className="text-center mt-6 sm:mt-8">
-            <a
-            rel='noopener noreferrer'
-            target='_blank'
-            href='https://www.mercadolivre.com.br/loja/jsl-artesanatos#from=share_eshop'
-              className="bg-amber-600 hover:bg-amber-700 text-black font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base hover:shadow-lg"
+            <button
+              onClick={handleViewAllModels}
+              className="bg-amber-600 hover:bg-amber-700 text-black font-semibold px-6 sm:px-8 py-2 sm:py-3 rounded-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base hover:shadow-lg flex items-center gap-2 mx-auto"
             >
+              <MessageCircle size={16} />
               Ver Todos os Modelos
-            </a>
+            </button>
           </div>
         </motion.div>
       </div>
